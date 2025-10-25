@@ -165,11 +165,6 @@ El sistema valida disponibilidad del libro, cantidad máxima por usuario y mora 
 - **Registrar pago de multa:** actualiza el historial del usuario.  
 - **Listar préstamos activos:** muestra todos los libros actualmente prestados.
 
-### Ejemplo de cálculo de multa
-```
-Multa = Días de atraso × Q1.00
-```
-
 ### Diagrama del módulo
 
 ![Diagrama préstamos y devoluciones](recursos/diagrama_prestamos.png)
