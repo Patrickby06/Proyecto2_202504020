@@ -1,10 +1,8 @@
 # Documentación - Proyecto 2: Sistema Digital de Gestión de Biblioteca
 
 ## Universidad de San Carlos de Guatemala
-**Facultad de Ingeniería**
+**Facultad de Ingeniería** - 
 **Curso:** Introducción a los algoritmos y flujo de datos
-
-
 
 ---
 
@@ -34,11 +32,11 @@ El programa inicia mostrando un menú principal, desde el cual el usuario puede 
 
 ## 2. Diagrama de flujo del proceso principal
 
-A continuación, se debe incluir el **diagrama general del sistema** donde se observe el flujo entre los módulos principales.
+A continuación, se muestra el **diagrama general del sistema** donde se observa el flujo entre los módulos principales.
 
 ![Diagrama del proceso principal](recursos/diagrama_biblioteca.png)
 
-El diagrama debe representar el menú principal y las llamadas a cada subproceso según la estructura general:
+Ejemplo de como se vería el Menú principal:
 
 ```
 =========================================
@@ -67,14 +65,14 @@ Ingrese la opcion que desea:
 3. Seleccionar una opción del menú principal.  
 4. Seguir las instrucciones que aparecen en pantalla.  
 
-## 3.1 Gestión de Libros
+## 3.1 Gestor de Libros
 
 ### Funcionalidad
 Permite registrar, modificar, eliminar, buscar y listar libros dentro del sistema.  
-Cada libro tiene un **código único** generado automáticamente para garantizar su unicidad.
+Cada libro tiene un **ID** generado automáticamente para facilitar las acciones dentro del sistema.
 
 ### Datos manejados
-- Código de libro (automático)
+- ID de libro (automático)
 - Título
 - Autor
 - Categoría o género
@@ -83,17 +81,17 @@ Cada libro tiene un **código único** generado automáticamente para garantizar
 - Estado (Disponible / Prestado / Reservado)
 
 ### Procesos principales
-- **Registrar libro:** se ingresan los datos y se guarda en los vectores.  
+- **Registrar libro:** se ingresan los datos y se guarda en los arreglos.  
 - **Buscar libro:** permite filtrar por título, autor o código.  
 - **Modificar libro:** actualiza datos existentes.  
 - **Eliminar libro:** solo si el libro no tiene préstamos activos.  
 - **Listar libros:** muestra en pantalla todos los libros registrados.
 
-### Diagrama del módulo
+### Diagrama de flujo del módulo
 
 ![Diagrama gestor de libros](recursos/diagrama_libros.png)
 
-El diagrama debe representar el menú principal y las llamadas a cada subproceso según la estructura general:
+Ejemplo de como se vería el submenú:
 ```
 =========================================
             GESTOR DE LIBROS             
@@ -107,16 +105,16 @@ Ingrese la opcion que desea:
 ```
 ---
 
-## 3.2 Gestión de Usuarios
+## 3.2 Gestor de Usuarios
 
 ### Funcionalidad
-Administra la información de los usuarios registrados en la biblioteca.  
-Cada usuario posee un **ID generado automáticamente** y puede tener un historial de préstamos.
+Administra la información de los usuarios registrados en el sistema de la biblioteca. 
+Cada usuario posee un **ID** generado automáticamente para facilitar las acciones dentro del sistema.
 
 ### Datos manejados
 - ID de usuario (automático)
-- Nombre completo
-- Carnet o DPI
+- Nombre
+- DPI o carné
 - Teléfono
 - Correo electrónico
 - Fecha de registro
@@ -127,11 +125,11 @@ Cada usuario posee un **ID generado automáticamente** y puede tener un historia
 - Consultar información específica.  
 - Listar todos los usuarios registrados.
 
-### Diagrama del módulo
+### Diagrama de flujo del módulo
 
 ![Diagrama gestión de usuarios](recursos/diagrama_usuarios.png)
 
-El diagrama debe representar el menú principal y las llamadas a cada subproceso según la estructura general:
+Ejemplo de como se vería el submenú:
 ```
 =========================================
            GESTOR DE USUARIOS            
@@ -153,7 +151,7 @@ El sistema valida disponibilidad del libro, cantidad máxima por usuario y mora 
 ### Datos manejados
 - Código de préstamo
 - ID de usuario
-- Código del libro
+- ID del libro
 - Fecha de préstamo
 - Fecha de devolución esperada
 - Días de atraso
@@ -165,9 +163,11 @@ El sistema valida disponibilidad del libro, cantidad máxima por usuario y mora 
 - **Registrar pago de multa:** actualiza el historial del usuario.  
 - **Listar préstamos activos:** muestra todos los libros actualmente prestados.
 
-### Diagrama del módulo
+### Diagrama de flujo del módulo
 
 ![Diagrama préstamos y devoluciones](recursos/diagrama_prestamos.png)
+
+Ejemplo de como se vería el submenú:
 
 ```
 =========================================
@@ -196,9 +196,11 @@ Genera reportes básicos sobre la actividad de la biblioteca, útiles para la ad
 - Total de libros por categoría.  
 - Multas activas y pagadas.
 
-### Diagrama del módulo
+### Diagrama de flujo del módulo
 
 ![Diagrama reportes](recursos/diagrama_reportes.png)
+
+Ejemplo de como se vería el submenú:
 
 ```
 =========================================
@@ -212,7 +214,8 @@ Genera reportes básicos sobre la actividad de la biblioteca, útiles para la ad
 =========================================
 Ingrese la opcion que desea:             
 ```
-### Ejemplo de interacción
+## 3.5 Ejemplo de interacción
+A continuación se muestra un ejemplo de como sería la interacción de un usuario normal con el código: 
 ```
 =========================================
         BIBLIOTECA UNIVERSITARIA         
@@ -257,7 +260,7 @@ Presione una tecla para regresar al Menú...
 
 ## 4. Estructuras de datos utilizadas
 
-### Arreglos (los mas importantes)
+### Arreglos (los más importantes)
 Libros
 - `titulo[]`: almacena los títulos de los libros.  
 - `autor[]`: guarda el nombre de los autores.
@@ -291,12 +294,12 @@ Usuarios
 
 | N° | Caso de prueba | Descripción | Resultado esperado | Resultado obtenido |
 |----|----------------|--------------|--------------------|--------------------|
-| 1 | Registro de un libro | Ingreso de un nuevo libro con todos los campos válidos | Libro guardado correctamente | Correcto |
-| 2 | Registro de usuario | Nuevo usuario con DPI único | Usuario registrado correctamente | Correcto |
-| 3 | Préstamo válido | Usuario con menos de 3 préstamos solicita libro disponible | Préstamo aceptado | Correcto |
-| 4 | Devolución con atraso | Usuario devuelve con 10 días de atraso | Multa de Q10.00 registrada | Correcto |
-| 5 | Eliminación de libro prestado | Intento de eliminar libro actualmente en préstamo | Operación rechazada | Correcto |
-| 6 | Reporte general | Mostrar libros más prestados | Listado generado | Correcto |
+| 1 | Registro de un libro | Ingreso de un nuevo libro con todos los campos válidos | Libro guardado correctamente | Correcto ✅|
+| 2 | Registro de usuario | Nuevo usuario con DPI único | Usuario registrado correctamente | Correcto ✅|
+| 3 | Préstamo válido | Usuario con menos de 3 préstamos solicita libro disponible | Préstamo aceptado | Correcto ✅|
+| 4 | Devolución con atraso | Usuario devuelve con 10 días de atraso | Multa de Q10.00 registrada | Correcto ✅|
+| 5 | Eliminación de libro prestado | Intento de eliminar libro actualmente en préstamo | Operación rechazada | Correcto ✅|
+| 6 | Reporte general | Mostrar libros más prestados | Listado generado | Correcto ✅|
 
 ---
 
@@ -315,6 +318,6 @@ El sistema cumple con los objetivos básicos del proyecto: automatizar el regist
 ---
  
 
-**Carné:** 202504020
-**Autor:** Patricio Manuel Romero Castellanos
+**Carné:** 202504020 - 
+**Autor:** Patricio Manuel Romero Castellanos - 
 **Fecha:** 24 / 10 / 2025
